@@ -15,8 +15,10 @@ export default function Navbar({ onLogoClick, onAboutClick, onContactClick }: Na
   const isSignedIn = false;
 
   const handleAuthClick = () => {
-    window.location.href = "/login";
-    setIsMobileMenuOpen(false); // Close mobile menu after navigation
+    // For GitHub Pages, we'll just show an alert for now
+    // In production, you'd implement proper authentication
+    alert("Authentication feature coming soon!");
+    setIsMobileMenuOpen(false);
   };
 
   useEffect(() => {
