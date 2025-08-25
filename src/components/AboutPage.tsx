@@ -1,11 +1,15 @@
 import React from 'react';
-import { Brain, Users, Target, Award, BookOpen, Globe, Clock, ArrowRight, CheckCircle, Star, TrendingUp, Shield } from 'lucide-react';
+import { ArrowLeft, Brain, Users, Target, Clock, Star, CheckCircle, BookOpen, Globe, Microscope, Calculator, Monitor, Zap, FlaskConical, Leaf, GraduationCap, Award, Shield, TrendingUp, ArrowRight } from 'lucide-react';
+import { useScrollToTop } from '../hooks/useScrollToTop';
 
 interface AboutPageProps {
   onGoBack: () => void;
 }
 
-export default function AboutPage({}: AboutPageProps) {
+export default function AboutPage({ onGoBack }: AboutPageProps) {
+  // Scroll to top when component mounts
+  useScrollToTop();
+
   return (
     <div className="min-h-screen bg-theme-background pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -162,60 +166,7 @@ export default function AboutPage({}: AboutPageProps) {
           </div>
         </section>
 
-        {/* Team Values Section */}
-        <section className="mb-20">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-theme-primary mb-6">
-              Our Values
-            </h2>
-            <p className="text-xl text-theme-secondary max-w-3xl mx-auto">
-              The principles that guide everything we do at QuizMaster.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Star,
-                title: "Excellence",
-                description: "We strive for excellence in everything we do, from content quality to user experience."
-              },
-              {
-                icon: Users,
-                title: "Accessibility",
-                description: "Education should be accessible to everyone, regardless of their background or location."
-              },
-              {
-                icon: Shield,
-                title: "Integrity",
-                description: "We maintain the highest standards of integrity and academic honesty in all our content."
-              },
-              {
-                icon: TrendingUp,
-                title: "Innovation",
-                description: "We continuously innovate to provide the best learning experience for our students."
-              },
-              {
-                icon: Globe,
-                title: "Inclusivity",
-                description: "We celebrate diversity and ensure our platform is inclusive for all students."
-              },
-              {
-                icon: Award,
-                title: "Quality",
-                description: "Quality is non-negotiable. Every piece of content is verified and regularly updated."
-              }
-            ].map((value, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <value.icon className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-theme-primary mb-3">{value.title}</h3>
-                <p className="text-theme-secondary leading-relaxed">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        
 
         {/* Call to Action */}
         <section className="text-center">

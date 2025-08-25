@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight, Mail, Phone, MapPin, Clock, MessageCircle, Send, CheckCircle, AlertCircle, ChevronDown } from 'lucide-react';
+import { useScrollToTop } from '../hooks/useScrollToTop';
 
 interface ContactPageProps {
   onGoBack: () => void;
@@ -48,7 +49,10 @@ function FAQItem({ question, answer }: FAQItemProps) {
   );
 }
 
-export default function ContactPage({ }: ContactPageProps) {
+export default function ContactPage({ onGoBack }: ContactPageProps) {
+  // Scroll to top when component mounts
+  useScrollToTop();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',

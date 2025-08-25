@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronRight, Clock, HelpCircle, SkipForward } from 'lucide-react';
 import { Question } from '../data/questions';
+import { useScrollToTop } from '../hooks/useScrollToTop';
 
 interface QuizScreenProps {
   questions: Question[];
@@ -13,6 +14,9 @@ export default function QuizScreen({ questions, category, onComplete }: QuizScre
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [answers, setAnswers] = useState<(number | null)[]>([]);
   const [isAnimating, setIsAnimating] = useState(false);
+
+  // Scroll to top when component mounts
+  useScrollToTop();
 
   const handleAnswerSelect = (answerIndex: number) => {
     setSelectedAnswer(answerIndex);
@@ -156,8 +160,8 @@ export default function QuizScreen({ questions, category, onComplete }: QuizScre
 <button
  onClick={handleNext}
  disabled={selectedAnswer === null}
- className={`px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 
-            flex items-center space-x-3 justify-center group w-1/2 mx-auto ${
+ className={`px-4 sm:px-6 py-3 rounded-xl font-semibold text-sm sm:text-base transition-all duration-300 
+            flex items-center space-x-3 justify-center group w-full sm:w-auto sm:mx-auto ${
    selectedAnswer !== null
      ? 'bg-theme-primary hover:bg-theme-primary-hover text-white shadow-lg hover:shadow-xl transform hover:scale-105'
      : 'bg-theme-surface-tertiary text-theme-tertiary cursor-not-allowed'
@@ -171,12 +175,12 @@ export default function QuizScreen({ questions, category, onComplete }: QuizScre
  }`} />
 </button>
 
-  <div className="flex gap-3 justify-center">
+  <div className="flex flex-col sm:flex-row gap-3 justify-center">
     <button
       onClick={handleSkip}
       className="group inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium 
                text-theme-secondary hover:text-theme-primary transition-all duration-300 
-               hover:bg-theme-surface-secondary rounded-xl"
+               hover:bg-theme-surface-secondary rounded-xl justify-center"
     >
       <SkipForward className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300" />
       Skip
@@ -186,7 +190,7 @@ export default function QuizScreen({ questions, category, onComplete }: QuizScre
       onClick={handleSkipToResults}
       className="group inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium 
                text-theme-secondary hover:text-theme-primary transition-all duration-300 
-               hover:bg-theme-surface-secondary rounded-xl"
+               hover:bg-theme-surface-secondary rounded-xl justify-center"
     >
       Skip to Results
     </button>

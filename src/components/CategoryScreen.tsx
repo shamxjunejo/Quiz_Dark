@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronDown, BookOpen, Calculator, Globe, Microscope, Monitor, Brain, Play, X, Target, Clock, Trophy, Star, Zap, FlaskConical, Leaf, GraduationCap } from 'lucide-react';
+import { useScrollToTop } from '../hooks/useScrollToTop';
 
 interface CategoryScreenProps {
   onCategorySelect: (category: string) => void;
@@ -240,6 +241,9 @@ export default function CategoryScreen({ onCategorySelect, onGoBack }: CategoryS
   const [selectedSubcategory, setSelectedSubcategory] = useState<string>('');
   const dropdownRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
+  // Scroll to top when component mounts
+  useScrollToTop();
+
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -304,7 +308,7 @@ export default function CategoryScreen({ onCategorySelect, onGoBack }: CategoryS
 
         {/* Categories Grid */}
 <main className="mb-12">
-  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
     {Object.entries(categories).map(([categoryName, categoryData]) => {
       const IconComponent = categoryData.icon;
       const isSelected = selectedCategory === categoryName;
@@ -327,29 +331,29 @@ export default function CategoryScreen({ onCategorySelect, onGoBack }: CategoryS
           >
             <div className="flex items-center justify-between mb-3">
               <div 
-                className={`w-10 h-10 rounded-lg bg-gradient-to-r ${categoryData.color} flex items-center justify-center shadow-md hover:scale-105 transition-transform duration-200`}
+                className={`w-10 h-10 rounded-lg bg-gradient-to-r ${categoryData.color} flex items-center justify-center shadow-md hover:scale-105 transition-transform duration-200 flex-shrink-0`}
                 onClick={(e) => handleDirectCategoryClick(categoryName, e)}
                 title={`Start mixed ${categoryName} quiz`}
               >
                 <IconComponent className="w-5 h-5 text-white" />
               </div>
-              <div className="w-6 h-6 rounded-full bg-theme-surface-secondary hover:bg-theme-surface-tertiary border border-theme-border flex items-center justify-center transition-all duration-200">
+              <div className="w-6 h-6 rounded-full bg-theme-surface-secondary hover:bg-theme-surface-tertiary border border-theme-border flex items-center justify-center transition-all duration-200 flex-shrink-0">
                 <ChevronDown className={`w-3 h-3 text-theme-secondary transition-transform duration-300 ${
                   isOpen ? 'rotate-180' : ''
                 }`} />
               </div>
             </div>
             
-            <h3 className="text-base font-bold text-theme-primary mb-1 whitespace-nowrap overflow-hidden text-ellipsis">
+            <h3 className="text-sm sm:text-base font-bold text-theme-primary mb-1 break-words">
               {categoryName}
             </h3>
             
-            <p className="text-xs text-theme-tertiary mb-1 whitespace-nowrap overflow-hidden text-ellipsis">
+            <p className="text-xs text-theme-tertiary mb-1">
               Topics: {categoryData.subcategories.length} 
             </p>
             
             {selectedSubcategory && selectedCategory === categoryName && (
-              <p className="text-xs text-blue-600 dark:text-blue-400 font-medium whitespace-nowrap overflow-hidden text-ellipsis">
+              <p className="text-xs text-blue-600 dark:text-blue-400 font-medium break-words">
                 Selected: {selectedSubcategory}
               </p>
             )}
@@ -363,7 +367,7 @@ export default function CategoryScreen({ onCategorySelect, onGoBack }: CategoryS
                   <button
                     key={subcategory}
                     onClick={() => handleSubcategorySelect(subcategory)}
-                    className={`w-full text-left px-3 py-2 rounded-lg text-xs transition-colors duration-200 ${
+                    className={`w-full text-left px-3 py-2 rounded-lg text-xs transition-colors duration-200 break-words ${
                       selectedSubcategory === subcategory
                         ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-medium'
                         : 'text-theme-primary hover:bg-theme-surface-secondary'

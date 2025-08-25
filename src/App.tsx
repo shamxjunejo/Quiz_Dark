@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomeScreen from './components/HomeScreen';
@@ -16,6 +16,11 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [score, setScore] = useState(0);
   const [userAnswers, setUserAnswers] = useState<(number | null)[]>([]);
+
+  // Scroll to top when screen changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentScreen]);
 
   const handleStartQuiz = () => {
     setCurrentScreen('categories');

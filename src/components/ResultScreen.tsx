@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Trophy, RotateCcw, Home, Target, Award, TrendingUp, CheckCircle, XCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { Question } from '../data/questions';
+import { useScrollToTop } from '../hooks/useScrollToTop';
 
 interface ResultScreenProps {
   score: number;
@@ -16,6 +17,9 @@ export default function ResultScreen({ score, totalQuestions, category, userAnsw
   const [showDetails, setShowDetails] = React.useState(false);
   const attemptedQuestions = userAnswers.filter(answer => answer !== null).length;
   const percentage = Math.round((score / totalQuestions) * 100);
+
+  // Scroll to top when component mounts
+  useScrollToTop();
 
   const getPerformanceMessage = () => {
     if (percentage >= 90) return { message: "Outstanding! 🌟", color: "text-green-600", bgColor: "bg-green-50", borderColor: "border-green-200" };
@@ -60,37 +64,37 @@ export default function ResultScreen({ score, totalQuestions, category, userAnsw
           </div>
 
           {/* Results Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-lg p-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6">
+            <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-lg p-3 sm:p-4">
               <div className="flex items-center justify-center mb-3">
-                <Target className="w-6 h-6 text-primary-600" />
+                <Target className="w-5 h-5 sm:w-6 sm:h-6 text-primary-600" />
               </div>
-              <div className="text-2xl font-bold text-primary-900">{score}</div>
-              <div className="text-sm text-primary-600 font-medium">Correct Answers</div>
+              <div className="text-lg sm:text-2xl font-bold text-primary-900">{score}</div>
+              <div className="text-xs sm:text-sm text-primary-600 font-medium">Correct Answers</div>
             </div>
 
-            <div className="bg-gradient-to-br from-accent-50 to-accent-100 rounded-lg p-4">
+            <div className="bg-gradient-to-br from-accent-50 to-accent-100 rounded-lg p-3 sm:p-4">
               <div className="flex items-center justify-center mb-3">
-                <TrendingUp className="w-6 h-6 text-accent-600" />
+                <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-accent-600" />
               </div>
-              <div className="text-2xl font-bold text-accent-900">{percentage}%</div>
-              <div className="text-sm text-accent-600 font-medium">Score Percentage</div>
+              <div className="text-lg sm:text-2xl font-bold text-accent-900">{percentage}%</div>
+              <div className="text-xs sm:text-sm text-accent-600 font-medium">Score Percentage</div>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-3 sm:p-4">
               <div className="flex items-center justify-center mb-3">
-                <CheckCircle className="w-6 h-6 text-blue-600" />
+                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
               </div>
-              <div className="text-2xl font-bold text-blue-900">{attemptedQuestions}</div>
-              <div className="text-sm text-blue-600 font-medium">Attempted</div>
+              <div className="text-lg sm:text-2xl font-bold text-blue-900">{attemptedQuestions}</div>
+              <div className="text-xs sm:text-sm text-blue-600 font-medium">Attempted</div>
             </div>
 
-            <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-4">
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-3 sm:p-4">
               <div className="flex items-center justify-center mb-3">
-                <Award className="w-6 h-6 text-gray-600" />
+                <Award className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">{totalQuestions}</div>
-              <div className="text-sm text-gray-600 font-medium">Total Questions</div>
+              <div className="text-lg sm:text-2xl font-bold text-gray-900">{totalQuestions}</div>
+              <div className="text-xs sm:text-sm text-gray-600 font-medium">Total Questions</div>
             </div>
           </div>
 
@@ -262,7 +266,7 @@ export default function ResultScreen({ score, totalQuestions, category, userAnsw
             <button
               onClick={onRetake}
               className="bg-theme-success bg-theme-success-hover text-white font-semibold py-3 px-6 
-                         rounded-xl text-base transition-all duration-300 transform hover:scale-105 
+                         rounded-xl text-sm sm:text-base transition-all duration-300 transform hover:scale-105 
                          shadow-lg hover:shadow-xl flex items-center space-x-3 justify-center group"
             >
               <RotateCcw className="w-5 h-5 group-hover:rotate-180 transition-transform duration-500" />
@@ -272,7 +276,7 @@ export default function ResultScreen({ score, totalQuestions, category, userAnsw
             <button
               onClick={onGoHome}
               className="bg-theme-primary bg-theme-primary-hover text-white font-semibold py-3 px-6 
-                         rounded-xl text-base transition-all duration-300 transform hover:scale-105 
+                         rounded-xl text-sm sm:text-base transition-all duration-300 transform hover:scale-105 
                          shadow-lg hover:shadow-xl flex items-center space-x-3 justify-center group"
             >
               <Home className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />

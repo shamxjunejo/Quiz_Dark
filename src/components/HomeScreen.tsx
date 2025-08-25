@@ -9,11 +9,11 @@ export default function HomeScreen({ onStartQuiz }: HomeScreenProps) {
   return (
     <div className="min-h-screen bg-theme-background">
 
-      {/* Hero Section */}
+          {/* Hero Section */}
       <section className="relative px-4 sm:px-6 lg:px-8 pt-16 pb-12">
         <div className="max-w-4xl mx-auto">
 
-          {/* Logo and Brand */}
+            {/* Logo and Brand */}
           <div className="text-center mb-16">
             <div className="flex justify-center mb-8 mt-12">
               <div className="relative p-6" role="img" aria-label="QuizMaster Logo">
@@ -28,12 +28,12 @@ export default function HomeScreen({ onStartQuiz }: HomeScreenProps) {
                 </div>
               </div>
             </div>
-
+            
             {/* Main heading */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-theme-primary mb-4 tracking-tight leading-tight">
               Quiz<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Master</span>
             </h1>
-
+            
             {/* Tagline */}
             <p className="text-lg sm:text-xl md:text-2xl text-theme-secondary mb-4 sm:mb-6 font-medium">
               Challenge Yourself
@@ -169,7 +169,7 @@ export default function HomeScreen({ onStartQuiz }: HomeScreenProps) {
                     {/* Icon Glow */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} ${feature.darkColor} 
                              rounded-2xl opacity-0 group-hover:opacity-50 blur-md transition-opacity duration-500`}></div>
-                  </div>
+</div>
 
                   {/* Feature Content */}
                   <div className="text-center relative z-10">
@@ -201,23 +201,23 @@ export default function HomeScreen({ onStartQuiz }: HomeScreenProps) {
 
 
 
-      {/* Feature Sections - Like Cursor's feature blocks */}
+      {/* Feature Sections - Redesigned Static & Responsive */}
 <section className="py-20 px-4 sm:px-6 lg:px-8">
   <div className="max-w-7xl mx-auto">
 
-    {/* Feature 2: Knowledge Base (moved to top) - Text left, Visual right */}
-    <div className="grid lg:grid-cols-2 gap-16 items-center mb-32">
-      <div>
+    {/* Feature 1: Knowledge Base - Text left, Visual right */}
+    <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 lg:mb-32">
+      <div className="space-y-6">
         <div className="inline-flex items-center px-3 py-1 rounded-full 
                        bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 
-                       text-sm font-medium mb-6 border border-blue-200 dark:border-blue-700/50">
+                       text-sm font-medium border border-blue-200 dark:border-blue-700/50">
           <Sparkles className="w-4 h-4 mr-2" />
           Comprehensive
         </div>
-        <h2 className="text-4xl lg:text-5xl font-bold text-theme-primary mb-6">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-theme-primary">
           Knows your subjects
         </h2>
-        <p className="text-xl text-theme-secondary leading-relaxed mb-8">
+        <p className="text-lg sm:text-xl text-theme-secondary leading-relaxed">
           Get questions from your favorite subjects or explore new topics. Use smart explanations with one click.
         </p>
         <button className="inline-flex items-center text-green-600 hover:text-green-700 font-medium group">
@@ -225,10 +225,12 @@ export default function HomeScreen({ onStartQuiz }: HomeScreenProps) {
           <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
         </button>
       </div>
-      <div>
-        <div className="relative bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-3xl p-8 h-96 overflow-hidden border border-blue-200/50 dark:border-blue-700/30">
-          {/* Top Row - Moving Left */}
-          <div className="flex gap-4 mb-6 animate-marquee-left">
+      
+      <div className="mt-8 lg:mt-0">
+        <div className="relative bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 
+                       rounded-3xl p-8 h-96 overflow-hidden border border-blue-200/50 dark:border-blue-700/30">
+          {/* Subject Categories Grid - Fixed Size Boxes */}
+          <div className="grid grid-cols-4 gap-4 h-full content-center">
             {[
               { icon: BookOpen, color: 'from-blue-500 to-blue-600', label: 'English' },
               { icon: Calculator, color: 'from-green-500 to-green-600', label: 'Mathematics' },
@@ -237,175 +239,76 @@ export default function HomeScreen({ onStartQuiz }: HomeScreenProps) {
               { icon: Globe, color: 'from-indigo-500 to-indigo-600', label: 'World Current Affairs' },
               { icon: Target, color: 'from-red-500 to-red-600', label: 'Pakistan Studies' },
               { icon: Star, color: 'from-yellow-500 to-yellow-600', label: 'Islamic Studies' },
-              // Duplicate for seamless loop
-              { icon: BookOpen, color: 'from-blue-500 to-blue-600', label: 'English' },
-              { icon: Calculator, color: 'from-green-500 to-green-600', label: 'Mathematics' },
-              { icon: Globe, color: 'from-purple-500 to-purple-600', label: 'General Knowledge' },
-              { icon: Clock, color: 'from-orange-500 to-orange-600', label: 'Pakistan Current Affairs' }
-            ].map((item, index) => (
-              <div key={index} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm transition-all duration-300 border border-blue-200/60 dark:border-blue-600/30 min-w-[100px]">
-                <div className={`w-12 h-12 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center mb-3 shadow-md`}>
-                  <item.icon className="w-6 h-6 text-white" />
-                </div>
-                <span className="text-sm font-medium text-blue-700 dark:text-blue-300 text-center leading-tight">{item.label}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Bottom Row - Moving Right */}
-          <div className="flex gap-4 animate-marquee-right">
-            {[
               { icon: Monitor, color: 'from-cyan-500 to-cyan-600', label: 'Computer Science' },
               { icon: Zap, color: 'from-pink-500 to-pink-600', label: 'Everyday Science' },
               { icon: Microscope, color: 'from-violet-500 to-violet-600', label: 'Physics' },
               { icon: FlaskConical, color: 'from-emerald-500 to-emerald-600', label: 'Chemistry' },
-              { icon: Leaf, color: 'from-lime-500 to-lime-600', label: 'Biology' },
-              { icon: GraduationCap, color: 'from-amber-500 to-amber-600', label: 'Pedagogy' },
-              { icon: BookOpen, color: 'from-rose-500 to-rose-600', label: 'Urdu' },
-              // Duplicate for seamless loop
-              { icon: Monitor, color: 'from-cyan-500 to-cyan-600', label: 'Computer Science' },
-              { icon: Zap, color: 'from-pink-500 to-pink-600', label: 'Everyday Science' },
-              { icon: Microscope, color: 'from-violet-500 to-violet-600', label: 'Physics' },
-              { icon: FlaskConical, color: 'from-emerald-500 to-emerald-600', label: 'Chemistry' }
+              { icon: Leaf, color: 'from-lime-500 to-lime-600', label: 'Biology' }
             ].map((item, index) => (
-              <div key={index} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm transition-all duration-300 border border-blue-200/60 dark:border-blue-600/30 min-w-[100px]">
+              <div key={index} 
+                   className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl 
+                            p-4 flex flex-col items-center justify-center shadow-sm transition-all duration-300
+                            border border-blue-200/60 dark:border-blue-600/30 min-w-[80px] min-h-[100px]">
                 <div className={`w-12 h-12 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center mb-3 shadow-md`}>
                   <item.icon className="w-6 h-6 text-white" />
                 </div>
-                <span className="text-sm font-medium text-blue-700 dark:text-blue-300 text-center leading-tight">{item.label}</span>
+                <span className="text-xs font-medium text-blue-700 dark:text-blue-300 text-center leading-tight">{item.label}</span>
               </div>
             ))}
           </div>
-
-          {/* Gradient Overlays for Fade Effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-blue-50 via-blue-50/80 to-transparent dark:from-blue-900/20 dark:via-blue-900/15 dark:to-transparent"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-blue-50 via-blue-50/80 to-transparent dark:from-blue-900/20 dark:via-blue-900/15 dark:to-transparent"></div>
         </div>
       </div>
     </div>
 
-    {/* Feature 1: Smart Learning with Animated Topics - Text right, Visual left (Green Theme) */}
-    <div className="grid lg:grid-cols-2 gap-16 items-center mb-32">
-      <div className="order-1 lg:order-1">
+    {/* Feature 2: Smart Learning - Visual left, Text right */}
+    <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 lg:mb-32">
+      <div className="order-2 lg:order-1">
         <div className="relative bg-gradient-to-br from-green-50 to-emerald-100 
                        dark:from-green-900/20 dark:to-emerald-900/20 
                        rounded-3xl p-8 h-96 overflow-hidden border border-green-200/50 
                        dark:border-green-700/30">
-
-          {/* Animated Topics Matrix */}
-          <div className="absolute inset-0 flex flex-col justify-center space-y-4">
-            {/* Row 1 - Moving Right */}
-            <div className="flex animate-scroll-right">
-              {[
-                'Grammar', 'Arithmetic', 'Physics', 'Programming', 'Geography', 'History',
-                'Chemistry', 'Algebra', 'Biology', 'Vocabulary', 'Statistics', 'Economy',
-                'Grammar', 'Arithmetic', 'Physics', 'Programming', 'Geography', 'History',
-                'Chemistry', 'Algebra', 'Biology', 'Vocabulary' // Extended for seamless loop
-              ].map((topic, index) => (
-                <div key={index}
-                  className="flex-shrink-0 mx-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 
-                             backdrop-blur-sm rounded-full border border-green-200/60 
-                             dark:border-green-600/30 text-sm font-medium 
-                             text-green-700 dark:text-green-300 shadow-sm whitespace-nowrap">
-                  {topic}
+          {/* Learning Topics Display - Fixed Container */}
+          <div className="flex flex-col justify-center space-y-4 h-full">
+            {/* Topic Rows - Static Layout */}
+            {[
+              { topics: ['Grammar', 'Arithmetic', 'Physics', 'Programming', 'Geography'], color: 'green' },
+              { topics: ['Chemistry', 'Algebra', 'Biology', 'Vocabulary', 'Statistics'], color: 'blue' },
+              { topics: ['Trigonometry', 'Writing Skills', 'Computer Basics', 'World Facts', 'Cybersecurity'], color: 'purple' },
+              { topics: ['MS Office', 'Earth Science', 'Geometry', 'Current Affairs', 'Health Medicine'], color: 'orange' },
+              { topics: ['Tenses Voice', 'Number System', 'Space Science', 'Internet Networking', 'Pakistan Studies'], color: 'pink' }
+            ].map((row, rowIndex) => (
+              <div key={rowIndex} className="flex justify-center overflow-hidden">
+                <div className="flex space-x-2">
+                  {row.topics.map((topic, index) => (
+                    <div key={index}
+                         className={`flex-shrink-0 px-3 py-2 bg-white/80 dark:bg-gray-800/80 
+                                   backdrop-blur-sm rounded-full border text-xs font-medium shadow-sm whitespace-nowrap
+                                   ${row.color === 'green' ? 'border-green-200/60 dark:border-green-600/30 text-green-700 dark:text-green-300' : 
+                                     row.color === 'blue' ? 'border-blue-200/60 dark:border-blue-600/30 text-blue-700 dark:text-blue-300' :
+                                     row.color === 'purple' ? 'border-purple-200/60 dark:border-purple-600/30 text-purple-700 dark:text-purple-300' :
+                                     row.color === 'orange' ? 'border-orange-200/60 dark:border-orange-600/30 text-orange-700 dark:text-orange-300' :
+                                     'border-pink-200/60 dark:border-pink-600/30 text-pink-700 dark:text-pink-300'}`}>
+                      {topic}
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-
-            {/* Row 2 - Moving Left */}
-            <div className="flex animate-scroll-left">
-              {[
-                'Trigonometry', 'Writing Skills', 'Computer Basics', 'World Facts', 'Cybersecurity',
-                'Environmental Science', 'Data Analysis', 'Critical Thinking', 'Sports', 'Politics',
-                'Trigonometry', 'Writing Skills', 'Computer Basics', 'World Facts', 'Cybersecurity',
-                'Environmental Science', 'Data Analysis', 'Critical Thinking' // Extended for seamless loop
-              ].map((topic, index) => (
-                <div key={index}
-                  className="flex-shrink-0 mx-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 
-                             backdrop-blur-sm rounded-full border border-blue-200/60 
-                             dark:border-blue-600/30 text-sm font-medium 
-                             text-blue-700 dark:text-blue-300 shadow-sm whitespace-nowrap">
-                  {topic}
-                </div>
-              ))}
-            </div>
-
-            {/* Row 3 - Moving Right */}
-            <div className="flex animate-scroll-right-slow">
-              {[
-                'MS Office', 'Earth Science', 'Sentence Structure', 'Geometry', 'Databases',
-                'Current Affairs', 'Health Medicine', 'Logical Reasoning', 'Puzzles', 'Awards',
-                'MS Office', 'Earth Science', 'Sentence Structure', 'Geometry', 'Databases',
-                'Current Affairs', 'Health Medicine', 'Logical Reasoning' // Extended for seamless loop
-              ].map((topic, index) => (
-                <div key={index}
-                  className="flex-shrink-0 mx-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 
-                             backdrop-blur-sm rounded-full border border-purple-200/60 
-                             dark:border-purple-600/30 text-sm font-medium 
-                             text-purple-700 dark:text-purple-300 shadow-sm whitespace-nowrap">
-                  {topic}
-                </div>
-              ))}
-            </div>
-
-            {/* Row 4 - Moving Left */}
-            <div className="flex animate-scroll-left-slow">
-              {[
-                'Tenses Voice', 'Number System', 'Space Science', 'Internet Networking',
-                'Pakistan Studies', 'Everyday Science', 'Analytical Reasoning', 'Idioms',
-                'Tenses Voice', 'Number System', 'Space Science', 'Internet Networking',
-                'Pakistan Studies', 'Everyday Science', 'Analytical Reasoning' // Extended for seamless loop
-              ].map((topic, index) => (
-                <div key={index}
-                  className="flex-shrink-0 mx-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 
-                             backdrop-blur-sm rounded-full border border-orange-200/60 
-                             dark:border-orange-600/30 text-sm font-medium 
-                             text-orange-700 dark:text-orange-300 shadow-sm whitespace-nowrap">
-                  {topic}
-                </div>
-              ))}
-            </div>
-
-            {/* Row 5 - Moving Right */}
-            <div className="flex animate-scroll-right-fast">
-              {[
-                'Comprehension', 'Data Interpretation', 'Operating Systems', 'Emerging Tech',
-                'Mathematical Reasoning', 'Error Detection', 'Sequences Series', 'Syllogisms',
-                'Comprehension', 'Data Interpretation', 'Operating Systems', 'Emerging Tech',
-                'Mathematical Reasoning', 'Error Detection', 'Sequences Series' // Extended for seamless loop
-              ].map((topic, index) => (
-                <div key={index}
-                  className="flex-shrink-0 mx-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 
-                             backdrop-blur-sm rounded-full border border-pink-200/60 
-                             dark:border-pink-600/30 text-sm font-medium 
-                             text-pink-700 dark:text-pink-300 shadow-sm whitespace-nowrap">
-                  {topic}
-                </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-
-          {/* Gradient Overlays for Fade Effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r 
-                         from-green-50 via-green-50/80 to-transparent 
-                         dark:from-green-900/20 dark:via-green-900/15 dark:to-transparent"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l 
-                         from-green-50 via-green-50/80 to-transparent 
-                         dark:from-green-900/20 dark:via-green-900/15 dark:to-transparent"></div>
         </div>
       </div>
-
-      <div className="order-2 lg:order-2">
+      
+      <div className="order-1 lg:order-2 space-y-6">
         <div className="inline-flex items-center px-3 py-1 rounded-full 
                        bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 
-                       text-sm font-medium mb-6 border border-green-200 dark:border-green-700/50">
+                       text-sm font-medium border border-green-200 dark:border-green-700/50">
           <Sparkles className="w-4 h-4 mr-2" />
           Smart Learning
         </div>
-        <h2 className="text-4xl lg:text-5xl font-bold text-theme-primary mb-6">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-theme-primary">
           Learn, learn, learn
         </h2>
-        <p className="text-xl text-theme-secondary leading-relaxed mb-8">
+        <p className="text-lg sm:text-xl text-theme-secondary leading-relaxed">
           QuizMaster lets you breeze through topics by predicting your learning needs and adapting to your pace.
         </p>
         <button className="inline-flex items-center text-green-600 dark:text-green-400 
@@ -416,196 +319,98 @@ export default function HomeScreen({ onStartQuiz }: HomeScreenProps) {
       </div>
     </div>
 
+    {/* Feature 3: Smart Questions - Text left, Visual right */}
+    <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 lg:mb-32">
+      <div className="space-y-6">
+        <div className="inline-flex items-center px-3 py-1 rounded-full 
+             bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 
+             text-sm font-medium border border-purple-200 dark:border-purple-700/50">
+          <Zap className="w-4 h-4 mr-2" />
+          Smart Powered
+        </div>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-theme-primary">
+          Practice with smart questions
+        </h2>
+        <p className="text-lg sm:text-xl text-theme-secondary leading-relaxed">
+          Get smart-generated MCQs from every subject. Each question adapts to your learning level with instant explanations.
+        </p>
+        <button className="inline-flex items-center text-purple-600 dark:text-purple-400 
+                 hover:text-purple-700 dark:hover:text-purple-300 font-medium group">
+          Start practicing
+          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+        </button>
+      </div>
 
-
-
-   {/* Feature 3: Smart Questions */}
-<div className="grid lg:grid-cols-2 gap-16 items-center mb-32">
-  <div className="order-2 lg:order-1">
-    <div className="inline-flex items-center px-3 py-1 rounded-full 
-         bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 
-         text-sm font-medium mb-6 border border-purple-200 dark:border-purple-700/50">
-      <Zap className="w-4 h-4 mr-2" />
-      Smart Powered
-    </div>
-    <h2 className="text-4xl lg:text-5xl font-bold text-theme-primary mb-6">
-      Practice with smart questions
-    </h2>
-    <p className="text-xl text-theme-secondary leading-relaxed mb-8">
-      Get smart-generated MCQs from every subject. Each question adapts to your learning level with instant explanations.
-    </p>
-    <button className="inline-flex items-center text-purple-600 dark:text-purple-400 
-             hover:text-purple-700 dark:hover:text-purple-300 font-medium group">
-      Start practicing
-      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-    </button>
-  </div>
-
-  <div className="order-1 lg:order-2">
-    <div className="relative bg-gradient-to-br from-purple-50 to-pink-100 
-         dark:from-purple-900/20 dark:to-pink-900/20 
-         rounded-3xl p-8 h-96 overflow-hidden border border-purple-200/50 
-         dark:border-purple-700/30 flex flex-col justify-center">
-
-      {/* Single Row - Moving Left */}
-      <div className="flex gap-4 animate-marquee-left whitespace-nowrap">
-        {[
-          {
-            subject: 'Mathematics',
-            question: 'What is 15% of 200?',
-            options: ['25', '30', '35', '40'],
-            answer: 'B',
-            color: 'from-blue-500 to-blue-600'
-          },
-          {
-            subject: 'English',
-            question: 'Choose the correct synonym of "Abundant"',
-            options: ['Scarce', 'Plentiful', 'Limited', 'Few'],
-            answer: 'B',
-            color: 'from-green-500 to-green-600'
-          },
-          {
-            subject: 'Physics',
-            question: 'The unit of force is:',
-            options: ['Joule', 'Newton', 'Watt', 'Pascal'],
-            answer: 'B',
-            color: 'from-indigo-500 to-indigo-600'
-          },
-          {
-            subject: 'General Knowledge',
-            question: 'Capital of Pakistan is:',
-            options: ['Karachi', 'Lahore', 'Islamabad', 'Peshawar'],
-            answer: 'C',
-            color: 'from-orange-500 to-orange-600'
-          },
-          {
-            subject: 'Chemistry',
-            question: 'Chemical symbol for Gold is:',
-            options: ['Go', 'Gd', 'Au', 'Ag'],
-            answer: 'C',
-            color: 'from-yellow-500 to-yellow-600'
-          },
-          {
-            subject: 'Computer Science',
-            question: 'Which language is used for web styling?',
-            options: ['HTML', 'CSS', 'JavaScript', 'Python'],
-            answer: 'B',
-            color: 'from-cyan-500 to-cyan-600'
-          },
-          {
-            subject: 'Biology',
-            question: 'The powerhouse of cell is:',
-            options: ['Nucleus', 'Ribosome', 'Mitochondria', 'Vacuole'],
-            answer: 'C',
-            color: 'from-emerald-500 to-emerald-600'
-          },
-          {
-            subject: 'Pakistan Studies',
-            question: 'Pakistan was created in:',
-            options: ['1945', '1946', '1947', '1948'],
-            answer: 'C',
-            color: 'from-red-500 to-red-600'
-          },
-          // Duplicate for seamless loop
-          {
-            subject: 'Mathematics',
-            question: 'What is 15% of 200?',
-            options: ['25', '30', '35', '40'],
-            answer: 'B',
-            color: 'from-blue-500 to-blue-600'
-          },
-          {
-            subject: 'English',
-            question: 'Choose the correct synonym of "Abundant"',
-            options: ['Scarce', 'Plentiful', 'Limited', 'Few'],
-            answer: 'B',
-            color: 'from-green-500 to-green-600'
-          },
-          {
-            subject: 'Physics',
-            question: 'The unit of force is:',
-            options: ['Joule', 'Newton', 'Watt', 'Pascal'],
-            answer: 'B',
-            color: 'from-indigo-500 to-indigo-600'
-          },
-          {
-            subject: 'General Knowledge',
-            question: 'Capital of Pakistan is:',
-            options: ['Karachi', 'Lahore', 'Islamabad', 'Peshawar'],
-            answer: 'C',
-            color: 'from-orange-500 to-orange-600'
-          },
-          {
-            subject: 'Chemistry',
-            question: 'Chemical symbol for Gold is:',
-            options: ['Go', 'Gd', 'Au', 'Ag'],
-            answer: 'C',
-            color: 'from-yellow-500 to-yellow-600'
-          },
-          {
-            subject: 'Computer Science',
-            question: 'Which language is used for web styling?',
-            options: ['HTML', 'CSS', 'JavaScript', 'Python'],
-            answer: 'B',
-            color: 'from-cyan-500 to-cyan-600'
-          },
-          {
-            subject: 'Biology',
-            question: 'The powerhouse of cell is:',
-            options: ['Nucleus', 'Ribosome', 'Mitochondria', 'Vacuole'],
-            answer: 'C',
-            color: 'from-emerald-500 to-emerald-600'
-          },
-          {
-            subject: 'Pakistan Studies',
-            question: 'Pakistan was created in:',
-            options: ['1945', '1946', '1947', '1948'],
-            answer: 'C',
-            color: 'from-red-500 to-red-600'
-          }
-        ].map((mcq, index) => (
-          <div key={index} className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-4 
-                           shadow-lg transition-all duration-300 
-                           border border-purple-200/60 dark:border-purple-600/30 min-w-[280px] flex-shrink-0">
-            <div className={`w-full h-2 bg-gradient-to-r ${mcq.color} rounded-full mb-3`}></div>
-            <h4 className="text-xs font-semibold text-purple-600 dark:text-purple-400 mb-2 uppercase tracking-wide">
-              {mcq.subject}
-            </h4>
-            <p className="text-sm font-medium text-gray-800 dark:text-gray-200 mb-3 leading-tight">
-              {mcq.question}
-            </p>
-            <div className="space-y-1">
-              {mcq.options.map((option, optIndex) => (
-                <div key={optIndex} className="flex items-center text-xs">
-                  <span className="w-4 h-4 rounded-full bg-gray-100 dark:bg-gray-700 
-                       flex items-center justify-center mr-2 text-gray-600 dark:text-gray-400 font-medium">
-                    {String.fromCharCode(65 + optIndex)}
-                  </span>
-                  <span className="text-gray-700 dark:text-gray-300">{option}</span>
+      <div className="mt-8 lg:mt-0">
+        <div className="relative bg-gradient-to-br from-purple-50 to-pink-100 
+             dark:from-purple-900/20 dark:to-pink-900/20 
+             rounded-3xl p-6 h-96 overflow-hidden border border-purple-200/50 
+             dark:border-purple-700/30 flex flex-col justify-center">
+          
+          {/* Sample MCQ Cards - Fixed Container */}
+          <div className="flex justify-center">
+            <div className="flex space-x-4 overflow-hidden">
+              {[
+                {
+                  subject: 'Mathematics',
+                  question: 'What is 15% of 200?',
+                  options: ['25', '30', '35', '40'],
+                  answer: 'B',
+                  color: 'from-blue-500 to-blue-600'
+                },
+                {
+                  subject: 'English',
+                  question: 'Choose the correct synonym of "Abundant"',
+                  options: ['Scarce', 'Plentiful', 'Limited', 'Few'],
+                  answer: 'B',
+                  color: 'from-green-500 to-green-600'
+                },
+                {
+                  subject: 'Physics',
+                  question: 'The unit of force is:',
+                  options: ['Joule', 'Newton', 'Watt', 'Pascal'],
+                  answer: 'B',
+                  color: 'from-indigo-500 to-indigo-600'
+                }
+              ].map((mcq, index) => (
+                <div key={index} 
+                     className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl 
+                              p-4 shadow-lg transition-all duration-300 
+                              border border-purple-200/60 dark:border-purple-600/30 min-w-[240px] flex-shrink-0">
+                  <div className={`w-full h-2 bg-gradient-to-r ${mcq.color} rounded-full mb-3`}></div>
+                  <h4 className="text-xs font-semibold text-purple-600 dark:text-purple-400 mb-2 uppercase tracking-wide">
+                    {mcq.subject}
+                  </h4>
+                  <p className="text-sm font-medium text-gray-800 dark:text-gray-200 mb-3 leading-tight">
+                    {mcq.question}
+                  </p>
+                  <div className="space-y-1">
+                    {mcq.options.map((option, optIndex) => (
+                      <div key={optIndex} className="flex items-center text-xs">
+                        <span className="w-4 h-4 rounded-full bg-gray-100 dark:bg-gray-700 
+                             flex items-center justify-center mr-2 text-gray-600 dark:text-gray-400 font-medium text-xs">
+                          {String.fromCharCode(65 + optIndex)}
+                        </span>
+                        <span className="text-gray-700 dark:text-gray-300 text-xs">{option}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-3 pt-2 border-t border-gray-200 dark:border-gray-600">
+                    <span className="text-xs text-green-600 dark:text-green-400 font-medium">
+                      Answer: {mcq.answer}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
-            <div className="mt-3 pt-2 border-t border-gray-200 dark:border-gray-600">
-              <span className="text-xs text-green-600 dark:text-green-400 font-medium">
-                Answer: {mcq.answer}
-              </span>
-            </div>
           </div>
-        ))}
+        </div>
       </div>
-
-      {/* Gradient Overlays for Fade Effect */}
-      <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r 
-           from-purple-50 via-purple-50/80 to-transparent 
-           dark:from-purple-900/20 dark:via-purple-900/15 dark:to-transparent"></div>
-      <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l 
-           from-purple-50 via-purple-50/80 to-transparent 
-           dark:from-purple-900/20 dark:via-purple-900/15 dark:to-transparent"></div>
     </div>
   </div>
-</div>
-</div>
 </section>
+
+ 
 
 
 
@@ -688,7 +493,7 @@ export default function HomeScreen({ onStartQuiz }: HomeScreenProps) {
           </button>
 
           <p className="text-sm text-theme-tertiary mt-6">No signup required • Start instantly</p>
-        </div>
+      </div>
       </section>
     </div>
   );
