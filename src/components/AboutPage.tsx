@@ -56,25 +56,29 @@ export default function AboutPage({ onGoBack }: AboutPageProps) {
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="mb-20">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { icon: Users, number: "50K+", label: "Active Students" },
-              { icon: BookOpen, number: "500+", label: "Quiz Categories" },
-              { icon: Award, number: "95%", label: "Success Rate" },
-              { icon: Globe, number: "25+", label: "Cities Covered" }
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-3xl font-bold text-theme-primary mb-2">{stat.number}</div>
-                <div className="text-theme-secondary">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </section>
+       {/* Stats Section */}
+<section className="mb-20 px-4">
+  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    {[
+      { icon: Users, number: "50K+", label: "Active Students" },
+      { icon: BookOpen, number: "500+", label: "Quiz Categories" },
+      { icon: Award, number: "95%", label: "Success Rate" },
+      { icon: Globe, number: "25+", label: "Cities Covered" }
+    ].map((stat, index) => (
+      <div
+        key={index}
+        className="text-center flex flex-col items-center justify-center"
+      >
+        <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-3">
+          <stat.icon className="w-8 h-8 text-white" />
+        </div>
+        <div className="text-2xl font-bold text-theme-primary">{stat.number}</div>
+        <div className="text-sm text-theme-secondary">{stat.label}</div>
+      </div>
+    ))}
+  </div>
+</section>
+
 
         {/* What We Offer Section */}
         <section className="mb-20">
